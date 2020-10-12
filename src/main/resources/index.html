@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html leng="pt-br">
+	<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="x-au-compatible" content="ie-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>POKEMONS EM EVENTOS</title>
+	</head>
+	<body>
+		<ul></ul>
+		<script type="text/javascript">
+		if(!!window.EventSource){
+			var eventSource = new EventSource('pokemons/events'); //http://localhost8080/index.html
+			var eventList = document.querySelector('ul');
+			
+			eventSource.onmessage = function(e) {
+				var newElement = document.creatElement('li');
+				
+				newElement.textContent = "Event: " + e.data;
+				eventList.appendChild(newElement);
+			}
+			
+		}else{
+			alert("O browser não suporta essa aplicação!")
+		}
+		</script>
+	</body>
+</html>
